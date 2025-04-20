@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>New Message Notification</title>
+<style>
+body {
+  font-family: sans-serif;
+  text-align: center;
+  margin-top: 50px;
+}
+
+#messageDisplay {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  display: none; /* Initially hidden */
+}
+
+#notificationSound {
+  display: none; /* Hide the audio element */
+}
+</style>
+</head>
+<body>
+
+<h1>New Message Notification</h1>
+
+<button id="newMessageButton">Simulate New Message</button>
+
+<div id="messageDisplay">
+  <p id="messageContent"></p>
+</div>
+
+<audio id="notificationSound" src="notification.mp3"></audio>
+
+<script>
+const newMessageButton = document.getElementById("newMessageButton");
+const messageDisplay = document.getElementById("messageDisplay");
+const messageContent = document.getElementById("messageContent");
+const notificationSound = document.getElementById("notificationSound");
+
+const messages = [
+  "You have a new message from John!",
+  "A meeting has been scheduled for tomorrow at 10 AM.",
+  "Your order has been shipped!",
+  "Reminder: Pay your electricity bill.",
+  "Important update: System maintenance tonight."
+];
+
+newMessageButton.addEventListener("click", function() {
+  const randomIndex = Math.floor(Math.random() * messages.length);
+  const newMessage = messages[randomIndex];
+
+  messageContent.textContent = newMessage;
+  messageDisplay.style.display = "block"; // Show the message
+
+  notificationSound.play(); // Play the notification sound
+
+  // Hide the message after a few seconds
+  setTimeout(function() {
+    messageDisplay.style.display = "none";
+  }, 5000); // Hide after 5 seconds
+
+});
+
+// optional: add a function to allow the user to close the message manually.
+messageDisplay.addEventListener('click', function(){
+    messageDisplay.style.display = 'none';
+})
+
+</script>
+
+</body>
+</html>
