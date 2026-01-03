@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Website</title>
+</head>
+<body>
+    <h1>Products</h1>
+
+    {% for product in products %}
+        <div>
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+            <p>Price: ₹{{ product.price }}</p>
+        </div>
+    {% endfor %}
+</body>
+</html>
